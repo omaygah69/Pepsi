@@ -7,11 +7,11 @@ int main()
     InitWindow(ScreenWidth, ScreenHeight, "Pepsi");
 
     Texture2D player_texture = LoadTexture("assets/idle.png");
-    Rectangle player_dest = {10, 100, 500, 500};
+    Rectangle player_dest = {350, 100, 100, 110};
     Sprite player = NewSprite(player_texture, player_dest);
 
     Platform Items[] = {
-        {{100, 500, 1000, 100}, 0, BROWN},
+        {{300, 500, 800, 100}, 1, BROWN},
     };
     int ItemsLength = sizeof(Items) / sizeof(Items[0]);
 
@@ -25,21 +25,25 @@ int main()
 
     while(!WindowShouldClose()){
         float DeltaTime = GetFrameTime();
-        UpdatePlayer(&player, DeltaTime);
+        UpdatePlayer(&player, DeltaTime, Items, ItemsLength);
         // Set Physics for the platforms first
-        ApplyGravity(&player, DeltaTime);
-
+    
         BeginDrawing();
         ClearBackground(SKYBLUE);
         for(int i = 0; i < ItemsLength; i++){
             DrawRectangleRec(Items[i].rectangle, Items[i].color);
         }
 
-        DrawTexturePro(player.Texture, (Rectangle){0, 0, 80 * player.dir, 80},
+        DrawRectangleRec((Rectangle){350, 400, 100, 100}, GREEN);
+        /* if(player.Destination.y > ScreenHeight - player.Destination.height){ */
+        /*     player.Destination.y = ScreenHeight - player.Destination.height; */
+        /* } */
+
+        
+        DrawTexturePro(player.Texture, (Rectangle){34, 30, 14 * player.dir, 17},
                        player.Destination, (Vector2){0, 0}, 0.0f, RAYWHITE);
         EndDrawing();
     }
-    
     CloseWindow();
     return 0;
 }

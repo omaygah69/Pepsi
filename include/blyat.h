@@ -25,3 +25,4 @@ typedef struct Platform
 
 Sprite NewSprite(Texture2D Texture,
                   Rectangle Destination);
+
