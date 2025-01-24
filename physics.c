@@ -6,7 +6,6 @@ void ApplyGravity(Sprite* character, float delta){
         character->Velocity.y = 1000;
     }
 }
-
 // To Be Continued
 
 void UpdatePlayer(Sprite* character, float delta, Platform* Items, int Length){
@@ -24,32 +23,30 @@ void UpdatePlayer(Sprite* character, float delta, Platform* Items, int Length){
         character->Velocity.y = -1000.0;
         character->CanJump = false;
     }
-
-    bool hitObstacle = true;
-
+    
     character->Destination.x += character->Velocity.x * delta;
     character->Destination.y += character->Velocity.y * delta;
             
+    bool onGround = false;
     for(int i = 0; i < Length; i++){
         Platform* pItem = &Items[i];
-        if (pItem->Blocking &&
-            pItem->rectangle.x < character->Destination.x + character->Destination.width &&
+        if(pItem->Blocking &&
+            pItem->rectangle.x <= character->Destination.x + character->Destination.width &&
             pItem->rectangle.x + pItem->rectangle.width > character->Destination.x &&
-            pItem->rectangle.y < character->Destination.y + character->Destination.height &&
-            pItem->rectangle.y + pItem->rectangle.height > character->Destination.y)
+            pItem->rectangle.y <= character->Destination.y + character->Destination.height &&
+            pItem->rectangle.y + (pItem->rectangle.height / 2) > character->Destination.y)
             {
-                hitObstacle = true;
+                onGround = true;
                 character->Velocity.y = 0.0f;
-                character->Destination.y = pItem->rectangle.y - character->Destination.height; 
+                character->Destination.y = pItem->rectangle.y - character->Destination.height;
                 break;
             }
 
-        if(!hitObstacle)
-            character->CanJump = false;
-        else
-            character->CanJump = true;
     }
-    
+    if(!onGround)
+        character->CanJump = false;
+    else
+        character->CanJump = true;
 }
 
 /* Im the goat  */

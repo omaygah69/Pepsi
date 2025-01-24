@@ -2,12 +2,12 @@
 
 int main()
 {
-    const int ScreenWidth = 1280;
-    const int ScreenHeight = 720;
+    const int ScreenWidth = 1600;
+    const int ScreenHeight = 900;
     InitWindow(ScreenWidth, ScreenHeight, "Pepsi");
 
     Texture2D player_texture = LoadTexture("assets/idle.png");
-    Rectangle player_dest = {350, 100, 100, 110};
+    Rectangle player_dest = {350, 100, 90, 100};
     Sprite player = NewSprite(player_texture, player_dest);
 
     Platform Items[] = {
@@ -16,7 +16,7 @@ int main()
     int ItemsLength = sizeof(Items) / sizeof(Items[0]);
 
     Camera2D camera = {0};
-    camera.target = player.Position;
+    camera.target = (Vector2){player.Destination.x, player.Destination.y};
     camera.offset = (Vector2){ ScreenWidth / 2.0f, ScreenHeight / 2.0f };
     camera.rotation = 01.0f;
     camera.zoom = 1.0f;
@@ -45,6 +45,6 @@ int main()
         EndDrawing();
     }
     CloseWindow();
+
     return 0;
 }
-
