@@ -41,8 +41,8 @@ void UpdatePlayer(Sprite* character, float delta, Platform* Items, int Length){
                 character->Destination.y = pItem->rectangle.y - character->Destination.height;
                 break;
             }
-
     }
+    
     if(!onGround)
         character->CanJump = false;
     else
@@ -51,45 +51,3 @@ void UpdatePlayer(Sprite* character, float delta, Platform* Items, int Length){
 
 /* Im the goat  */
 
-
-/* bool hitObstacle = false; */
-
-/* for(int i = 0; i < Length; i++){ */
-/*     Platform* pi = &Items[i]; */
-/*     // To Be Continued */
-/*     /\* float* px = &(character->Destination.x); *\/ */
-/*     /\* float* py = &(character->Destination.y); *\/ */
-/*     if (pi->Blocking && */
-/*         pi->rectangle.x < character->Destination.x + character->Destination.width && */
-/*         pi->rectangle.x + pi->rectangle.width > character->Destination.x && */
-/*         pi->rectangle.y < character->Destination.y + character->Destination.height && */
-/*         pi->rectangle.y + pi->rectangle.height > character->Destination.y) */
-/*         { */
-/*             hitObstacle = true; */
-/*             character->Velocity.y = 0.0f; */
-/*             character->Destination.y = pi->rectangle.y; */
-/*             break; */
-/*         } */
-/* } */
-
-/* if(!hitObstacle){ */
-/*     character->Destination.y += character->Velocity.y * delta; */
-/*     character->Velocity.y += 400; */
-/*     character->CanJump = false; */
-/* } */
-/* else */
-/*     character->CanJump = true; */
-
-
-/* if(pItem->Blocking &&  */
-/*          pItem->rectangle.x <= character->Destination.x  && */
-/*          pItem->rectangle.x + pItem->rectangle.width >= character->Destination.x && */
-/*          pItem->rectangle.y >= character->Destination.y && */
-/*          pItem->rectangle.y <= character->Destination.y) */
-/*           { */
-/*               hitObstacle = true; */
-/*               character->Velocity.y = 0.0f; */
-/*               character->Destination.y = pItem->rectangle.y; */
-/*               break; */
-/*           } */
-            

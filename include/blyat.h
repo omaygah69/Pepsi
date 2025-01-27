@@ -26,3 +26,5 @@ typedef struct Platform
 Sprite NewSprite(Texture2D Texture,
                   Rectangle Destination);
 
+void UpdateCameraFollow(Camera2D* camera, Sprite* character);
+void UpdateCameraFocusPlayer(Camera2D* camera, Sprite* character, int width, int height);

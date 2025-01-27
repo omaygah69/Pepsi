@@ -26,6 +26,7 @@ int main()
     while(!WindowShouldClose()){
         float DeltaTime = GetFrameTime();
         UpdatePlayer(&player, DeltaTime, Items, ItemsLength);
+        UpdateCameraFocusPlayer(&camera, &player, ScreenWidth, ScreenHeight);
         // Set Physics for the platforms first
     
         BeginDrawing();
@@ -48,3 +49,5 @@ int main()
 
     return 0;
 }
+
+
