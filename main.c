@@ -36,10 +36,6 @@ int main()
         }
 
         DrawRectangleRec((Rectangle){350, 400, 100, 100}, GREEN);
-        /* if(player.Destination.y > ScreenHeight - player.Destination.height){ */
-        /*     player.Destination.y = ScreenHeight - player.Destination.height; */
-        /* } */
-
         
         DrawTexturePro(player.Texture, (Rectangle){34, 30, 14 * player.dir, 17},
                        player.Destination, (Vector2){0, 0}, 0.0f, RAYWHITE);
